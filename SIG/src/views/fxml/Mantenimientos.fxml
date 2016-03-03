@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupportController">
    <children>
       <TabPane prefHeight="740.0" prefWidth="1080.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -40,17 +40,11 @@
                               <String fx:value="allcolors" />
                               <String fx:value="labels" />
                            </styleClass></Label>
-                        <Label layoutX="47.0" layoutY="122.0" text="Empleado:">
-                           <styleClass>
-                              <String fx:value="allcolors" />
-                              <String fx:value="labels" />
-                           </styleClass></Label>
                         <Label layoutX="29.0" layoutY="164.0" text="Tipo Cliente:">
                            <styleClass>
                               <String fx:value="allcolors" />
                               <String fx:value="labels" />
                            </styleClass></Label>
-                        <ComboBox layoutX="157.0" layoutY="114.0" prefHeight="26.0" prefWidth="340.0" />
                         <ComboBox layoutX="160.0" layoutY="204.0" prefHeight="26.0" prefWidth="339.0" />
                         <Label layoutX="21.0" layoutY="205.0" text="Cliente Fisico:">
                            <styleClass>
@@ -62,12 +56,7 @@
                               <String fx:value="allcolors" />
                               <String fx:value="labels" />
                            </styleClass></Label>
-                        <ComboBox layoutX="703.0" layoutY="203.0" prefHeight="26.0" prefWidth="339.0" />
-                        <ToggleButton layoutX="155.0" layoutY="161.0" mnemonicParsing="false" text="ToggleButton">
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </ToggleButton>
+                        <ComboBox fx:id="cbmorales" layoutX="703.0" layoutY="203.0" prefHeight="26.0" prefWidth="339.0" />
                         <Separator layoutX="-3.0" layoutY="308.0" prefHeight="0.0" prefWidth="1080.0" styleClass="separador" />
                         <Label contentDisplay="CENTER" layoutX="447.0" layoutY="322.0" styleClass="titledat" text="Datos Equipos" />
                         <Label layoutX="22.0" layoutY="369.0" text="Tipo:">
@@ -105,6 +94,12 @@
                            </styleClass>
                         </Label>
                         <TextArea layoutX="18.0" layoutY="511.0" prefHeight="181.0" prefWidth="625.0" />
+                        <RadioButton layoutX="160.0" layoutY="155.0" mnemonicParsing="false" text="Fisico">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="tipocliente" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="229.0" layoutY="155.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Moral" textAlignment="RIGHT" toggleGroup="$tipocliente" />
                      </children>
                   </AnchorPane>
             </content>
@@ -132,7 +127,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab styleClass="pestanias" text="Mantenimiento">
+            <Tab disable="true" styleClass="pestanias" text="Mantenimiento">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1080.0" styleClass="allcolors">
                      <children>
