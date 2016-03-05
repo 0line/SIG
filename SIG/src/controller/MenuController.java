@@ -2,6 +2,9 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,6 +17,7 @@ public class MenuController implements Initializable,IControllerWindows{
 	public MenuController() {
 		// TODO Auto-generated constructor stub
 		super();
+		
 	}
 	
 	public static MenuController getInstancia(){
@@ -32,7 +36,6 @@ public class MenuController implements Initializable,IControllerWindows{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		myWindows.showScreen(Main.screenLogin);
-		
 	}
 	
 	//Métodos para asignar menú segun el nivel
@@ -46,13 +49,24 @@ public class MenuController implements Initializable,IControllerWindows{
 	
 	@FXML private void supports(){
 		myWindows.showScreen(Main.screenSupports);
-		btnClientes.setVisible(false);
 	}
 	
+	@FXML private void clientes(){
+		System.out.println(Main.screenClientes);
+		myWindows.showScreen(Main.screenClientes);
+	}
+
+	@FXML private void empleados(){
+		System.out.println(Main.screenEmpleados);
+		myWindows.showScreen(Main.screenEmpleados);
+	}
 	
-	public void activeMenu(String nivel){
-		if(nivel=="admin"){
-			admin();
+	@FXML public void activeMenu(String nivel){
+		if(nivel.compareTo("admin")>0){
+			
+		}
+		else{
+			 admin();
 		}
 	}
 }

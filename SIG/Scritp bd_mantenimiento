@@ -47,7 +47,18 @@ create table equipos(
 	foreign key (Moral_ID) references ClientesMorales (MoralesID),
 	foreign key (Fisico_ID) references ClientesFisicos (FisicosID)
 );
-
+create table equipos(
+	id_equipos serial not null primary key,
+	tipo varchar (50) not null,
+	modelo varchar (200) not null,
+	nserie varchar(200) not null,
+	marca varchar(50) not null,
+	descripcion_equipo text not null,
+	fecha_registro varchar not null,
+	Moral_ID int null,
+	Fisico_ID int null,
+	estatus_equipo int not null default (1),
+);
 
 
 /*INSERTAR DATOS CLIENTESMORALES,CLIENTESFISICO Y EQUIPOS*/
@@ -59,6 +70,9 @@ values(default,'Soluciones Informaticas del golfo','juan jose perez','rfc','lorw
 
 
 
+
+Insert into ClientesMorales (MoralesID,razonSocial,nombre,rfc,direccion,ciudad,estado,pais,telefono,correo,estatus)
+values(default,'rockola','cliente prueba','rfc','lorwasa','cordoba','veracruz','mexico','324245','email@email.com',default);
 
 
 

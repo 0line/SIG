@@ -27,7 +27,7 @@ public class LoginController implements Initializable, IControllerWindows{
 	
 	
 	//Ventana de bienvenido si el usuario se loguea correctamente
-	/*@FXML private Boolean Welcome(){ Aqui debo pasar el nivel que recupero
+	/*@FXML private Boolean Welcome(){ //Aqui debo pasar el nivel que recupero
 		try {
 			myWindows.showScreen(Main.screenWelcome);
 			nivel="admin";

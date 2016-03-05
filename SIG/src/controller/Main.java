@@ -20,6 +20,10 @@ public class Main extends Application{
 	public static String fileLogin="../views/fxml/login.fxml";
 	public static String screenWelcome="Bienvenido";
 	public static String fileWelcome="../views/fxml/welcome.fxml";
+	public static String screenClientes="Bienvenido";
+	public static String fileClientes="../views/fxml/Clientes.fxml";
+	public static String screenEmpleados="Bienvenido";
+	public static String fileEmpleados="../views/fxml/Empleados.fxml";
 	Group root= new Group();	
 	@Override
 	public void start(Stage primaryStage) throws Exception{

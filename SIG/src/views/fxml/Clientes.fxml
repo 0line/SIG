@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerClientesF">
+   <children>
+      <TabPane prefHeight="740.0" prefWidth="1080.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab styleClass="pestanias" text="Físicos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="allcolors">
+                     <children>
+                        <ToolBar prefHeight="40.0" prefWidth="1080.0" styleClass="toolbar">
+                           <items>
+                              <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clickNuevo" styleClass="btntoolbar" text="Nuevo" />
+                              <Button fx:id="btnGuardar" disable="true" mnemonicParsing="false" onAction="#clickInsertar" styleClass="btntoolbar" text="Guardar" />
+                              <Button fx:id="btnModificar" disable="true" mnemonicParsing="false" onAction="#clickModificar" styleClass="btntoolbar" text="Editar" />
+                              <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" onAction="#clickEliminar" styleClass="btntoolbar" text="Eliminar" />
+                              <Button fx:id="btnCancelarF" mnemonicParsing="false" text="Cancelar" onAction="#clickCancelarF" styleClass="btntoolbar"/>
+                              <Label text="Buscar:">
+                                 <styleClass>
+                                    <String fx:value="labels" />
+                                    <String fx:value="btntoolbar" />
+                                 </styleClass>
+                              </Label>
+                              <TextField fx:id="txtBuscar" prefHeight="25.0" prefWidth="295.0" />
+                           </items>
+                        </ToolBar>
+                        <TableView fx:id="tvClientes" layoutX="38.0" layoutY="330.0" onMouseClicked="#clickTableView" prefHeight="246.0" prefWidth="957.0">
+                           <columns>
+                              <TableColumn prefWidth="46.0" text="ID">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="fisicosid" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="72.0" text="RFC">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="rfc" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="70.0" text="Nombre">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="nombre" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="103.0" text="Apellido Paterno">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="apellidop" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="107.0" text="Apellido Materno">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="apellidom" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="94.0" text="Dirección">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="direccion" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="47.0" text="Ciudad">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="ciudad" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="75.0" text="Estado">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="estado" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="75.0" text="País">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="pais" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="86.0" text="Teléfono">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="telefono" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="112.0" text="Correo">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="correo" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="69.0" text="Estatus">
+                              <cellValueFactory>
+                	<PropertyValueFactory property="estatus" />
+                </cellValueFactory>
+                 </TableColumn>
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="txtTelefonoF" disable="true" layoutX="700.0" layoutY="224.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="617.0" layoutY="270.0" text="Correo:">
+                          <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtPaisF" disable="true" layoutX="700.0" layoutY="186.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="67.0" layoutY="105.0" text="RFC:">
+                          <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtEstadoF" disable="true" layoutX="700.0" layoutY="144.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="62.0" layoutY="190.0" text="Apellido Paterno:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="617.0" layoutY="148.0" text="Estado:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtCiudadF" disable="true" layoutX="700.0" layoutY="101.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TextField fx:id="txtRFCF" disable="true" layoutX="222.0" layoutY="104.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TextField fx:id="txtMaternoF" disable="true" layoutX="222.0" layoutY="227.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="612.0" layoutY="190.0" text="País:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="612.0" layoutY="228.0" text="Teléfono:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="617.0" layoutY="105.0" text="Ciudad:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="65.0" layoutY="270.0" text="Dirección:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtDireccionF" disable="true" layoutX="222.0" layoutY="269.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TextField fx:id="txtPaternoF" disable="true" layoutX="222.0" layoutY="189.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TextField fx:id="txtNombreF" disable="true" layoutX="222.0" layoutY="147.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="62.0" layoutY="148.0" text="Nombre:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="159.0" layoutY="66.0" text="Datos Cliente">
+                           <styleClass>
+                              <String fx:value="titledat" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label disable="true" layoutX="66.0" layoutY="211.0" text="Fecha Fin Mantenimiento:" visible="false">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtCorreoF" disable="true" layoutX="700.0" layoutY="266.0" prefHeight="25.0" prefWidth="296.0" />
+                        <Label layoutX="62.0" layoutY="228.0" text="Apellido Materno:">
+                          <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtIDF" layoutX="406.0" layoutY="54.0" visible="false" />
+                        <Label fx:id="lblMensaje" layoutX="145.0" layoutY="638.0" text="Mensajes" textFill="#e40000">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="ckbInactivos" layoutX="664.0" layoutY="647.0" mnemonicParsing="false" onAction="#mostrarInactivos" text="Inactivos" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab styleClass="pestanias" text="Morales">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1080.0" styleClass="allcolors">
+                     <children>
+                        <ToolBar layoutY="-6.0" prefHeight="40.0" prefWidth="1080.0" styleClass="toolbar">
+                          <items>
+                            <Button fx:id="btnNuevoM" mnemonicParsing="false" onAction="#clickNuevoM" styleClass="btntoolbar" text="Nuevo" />
+                              <Button fx:id="btnGuardarM" disable="true" mnemonicParsing="false" onAction="#clickInsertarM" styleClass="btntoolbar" text="Guardar" />
+                              <Button fx:id="btnModificarM" disable="true" mnemonicParsing="false" onAction="#clickModificarM" styleClass="btntoolbar" text="Modificar" />
+                              <Button fx:id="btnEliminarM" disable="true" mnemonicParsing="false" onAction="#clickEliminarM" styleClass="btntoolbar" text="Eliminar" />
+                              <Button fx:id="btnCancelarM" disable="true" mnemonicParsing="false" text="Cancelar" onAction="#clickCancelarM" styleClass="btntoolbar"/>
+                              <Label text="Buscar:">
+                                 <styleClass>
+                                    <String fx:value="labels" />
+                                    <String fx:value="btntoolbar" />
+                                 </styleClass>
+                              </Label>
+                              <TextField prefHeight="25.0" prefWidth="295.0" />
+                          </items>
+                        </ToolBar>
+                        <DatePicker disable="true" layoutX="841.0" layoutY="95.0" visible="false" />
+                        <Label disable="true" layoutX="614.0" layoutY="98.0" text="Fecha Fin Mantenimiento:" visible="false">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="202.0" layoutY="78.0" text="Datos Cliente">
+                           <styleClass>
+                              <String fx:value="titledat" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="34.0" layoutY="263.0" text="Nombre:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtNombreM" disable="true" layoutX="190.0" layoutY="260.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TextField fx:id="txtDireccionM" disable="true" layoutX="191.0" layoutY="303.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TextField fx:id="txtCiudadM" disable="true" layoutX="191.0" layoutY="352.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="36.0" layoutY="306.0" text="Dirección:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="34.0" layoutY="355.0" text="Ciudad:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="614.0" layoutY="263.0" text="Teléfono:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="614.0" layoutY="221.0" text="País:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtEstadoM" disable="true" layoutX="731.0" layoutY="176.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TextField fx:id="txtTelefonoM" disable="true" layoutX="731.0" layoutY="260.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TextField fx:id="txtPaisM" disable="true" layoutX="731.0" layoutY="217.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="614.0" layoutY="179.0" text="Estado:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="36.0" layoutY="179.0" text="Razon Social:">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtRazonM" disable="true" layoutX="188.0" layoutY="176.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="34.0" layoutY="221.0" text="RFC:">
+                          <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtRFCM" disable="true" layoutX="188.0" layoutY="217.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="612.0" layoutY="306.0" text="Correo:">
+                          <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="txtCorreoM" disable="true" layoutX="731.0" layoutY="303.0" prefHeight="25.0" prefWidth="295.0" />
+                        <TableView fx:id="tvClientesM" layoutX="34.0" layoutY="391.0" onMouseClicked="#clickTableViewM" prefHeight="246.0" prefWidth="957.0">
+                           <columns>
+                              <TableColumn prefWidth="56.0" text="ID">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="moralesid" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="112.0" text="Razón Social">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="razonsocial" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="63.0" text="RFC">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="rfc" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="69.0" text="Nombre">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="nombre" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="117.0" text="Dirección">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="direccion" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="91.0" text="Ciudad">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="ciudad" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="83.0" text="Estado">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="estado" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="90.0" text="País">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="pais" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="84.0" text="Teléfono">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="telefono" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn prefWidth="116.0" text="Correo">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="correo" />
+                </cellValueFactory>
+                 </TableColumn>
+                              <TableColumn minWidth="0.0" prefWidth="75.0" text="Estatus">
+                               <cellValueFactory>
+                	<PropertyValueFactory property="estatus" />
+                </cellValueFactory>
+                 </TableColumn>
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="txtIDM" layoutX="409.0" layoutY="74.0" visible="false" />
+                        <Label fx:id="lblMensajeM" layoutX="124.0" layoutY="655.0" text="Mensaje" />
+                        <TextField fx:id="txtIDM" layoutX="502.0" layoutY="83.0" visible="false" />
+                        <CheckBox fx:id="ckbInactivosM" layoutX="553.0" layoutY="647.0" mnemonicParsing="false" onAction="#mostrarInactivosM" text="CheckBox" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

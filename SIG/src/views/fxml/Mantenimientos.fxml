@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.cell.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.ComboBoxListCell?>
+<?import javafx.scene.control.Control?>
+<?import javafx.scene.control.cell.CheckBoxTableCell?>
+<?import java.lang.Object?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupportController">
    <children>
@@ -16,13 +22,25 @@
                      <children>
                         <ToolBar prefHeight="40.0" prefWidth="1080.0" styleClass="toolbar">
                           <items>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="13.0" prefWidth="83.0" text="Nuevo">
+                              <Button fx:id="btnNew" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#New" prefHeight="13.0" prefWidth="83.0" text="Nuevo">
                                  <styleClass>
                                     <String fx:value="allcolors" />
                                     <String fx:value="btntoolbar" />
                                  </styleClass>
                               </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="10.0" prefWidth="96.0" text="Guardar">
+                              <Button fx:id="btnSave" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#save" prefHeight="10.0" prefWidth="96.0" text="Guardar">
+                                 <styleClass>
+                                    <String fx:value="allcolors" />
+                                    <String fx:value="btntoolbar" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btnUpdate" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#update" prefHeight="10.0" prefWidth="96.0" text="Actualizar">
+                                 <styleClass>
+                                    <String fx:value="allcolors" />
+                                    <String fx:value="btntoolbar" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btnCancel" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#Cancel" prefHeight="10.0" prefWidth="96.0" text="Cancelar">
                                  <styleClass>
                                     <String fx:value="allcolors" />
                                     <String fx:value="btntoolbar" />
@@ -34,7 +52,7 @@
                            </opaqueInsets>
                         </ToolBar>
                         <Label contentDisplay="CENTER" layoutX="463.0" layoutY="49.0" styleClass="titledat" text="Datos Generales" />
-                        <DatePicker layoutX="844.0" layoutY="99.0" />
+                        <DatePicker fx:id="dpregistro" disable="true" layoutX="844.0" layoutY="99.0" />
                         <Label layoutX="678.0" layoutY="104.0" text="Fecha Registro:">
                            <styleClass>
                               <String fx:value="allcolors" />
@@ -45,7 +63,7 @@
                               <String fx:value="allcolors" />
                               <String fx:value="labels" />
                            </styleClass></Label>
-                        <ComboBox layoutX="160.0" layoutY="204.0" prefHeight="26.0" prefWidth="339.0" />
+                        <ComboBox fx:id="cbfisicos" disable="true" layoutX="160.0" layoutY="204.0" prefHeight="26.0" prefWidth="339.0" />
                         <Label layoutX="21.0" layoutY="205.0" text="Cliente Fisico:">
                            <styleClass>
                               <String fx:value="allcolors" />
@@ -56,7 +74,9 @@
                               <String fx:value="allcolors" />
                               <String fx:value="labels" />
                            </styleClass></Label>
-                        <ComboBox fx:id="cbmorales" layoutX="703.0" layoutY="203.0" prefHeight="26.0" prefWidth="339.0" />
+                        <ComboBox fx:id="cbmorales" disable="true" layoutX="703.0" layoutY="203.0" prefHeight="26.0" prefWidth="339.0">
+                        
+                        </ComboBox>
                         <Separator layoutX="-3.0" layoutY="308.0" prefHeight="0.0" prefWidth="1080.0" styleClass="separador" />
                         <Label contentDisplay="CENTER" layoutX="447.0" layoutY="322.0" styleClass="titledat" text="Datos Equipos" />
                         <Label layoutX="22.0" layoutY="369.0" text="Tipo:">
@@ -83,23 +103,26 @@
                               <String fx:value="labels" />
                            </styleClass>
                         </Label>
-                        <ComboBox layoutX="82.0" layoutY="366.0" prefHeight="26.0" prefWidth="230.0" />
-                        <TextField layoutX="424.0" layoutY="369.0" prefHeight="25.0" prefWidth="226.0" />
-                        <TextField layoutX="804.0" layoutY="368.0" prefHeight="25.0" prefWidth="226.0" />
-                        <TextField layoutX="113.0" layoutY="431.0" prefHeight="25.0" prefWidth="293.0" />
-                        <Label layoutX="17.0" layoutY="487.0" text="Descripcion Equipo:">
+                        <ComboBox fx:id="cbtipos" disable="true" layoutX="82.0" layoutY="366.0" prefHeight="26.0" prefWidth="230.0">
+                        	
+                        </ComboBox>
+                        <TextField fx:id="txtmarca" disable="true" layoutX="424.0" layoutY="369.0" prefHeight="25.0" prefWidth="226.0" />
+                        <TextField fx:id="txtmodelo" disable="true" layoutX="804.0" layoutY="368.0" prefHeight="25.0" prefWidth="226.0" />
+                        <TextField fx:id="txtnserie" disable="true" layoutX="113.0" layoutY="431.0" prefHeight="25.0" prefWidth="293.0" />
+                        <Label layoutX="17.0" layoutY="487.0" text="Descripción Equipo:">
                            <styleClass>
                               <String fx:value="allcolors" />
                               <String fx:value="labels" />
                            </styleClass>
                         </Label>
-                        <TextArea layoutX="18.0" layoutY="511.0" prefHeight="181.0" prefWidth="625.0" />
-                        <RadioButton layoutX="160.0" layoutY="155.0" mnemonicParsing="false" text="Fisico">
+                        <TextArea fx:id="txtdescripcion" disable="true" layoutX="18.0" layoutY="511.0" prefHeight="181.0" prefWidth="625.0" />
+                        <RadioButton fx:id="rdfisico" disable="true" layoutX="160.0" layoutY="155.0" mnemonicParsing="false" onAction="#actCombo" selected="true" text="Fisico">
                            <toggleGroup>
                               <ToggleGroup fx:id="tipocliente" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="229.0" layoutY="155.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Moral" textAlignment="RIGHT" toggleGroup="$tipocliente" />
+                        <RadioButton fx:id="rdmoral" alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" layoutX="229.0" layoutY="155.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#actCombo" text="Moral" textAlignment="RIGHT" toggleGroup="$tipocliente" />
+                        <Label fx:id="lblMensaje" alignment="CENTER" layoutX="687.0" layoutY="571.0" prefHeight="31.0" prefWidth="345.0" styleClass="titledat" text="Mensaje" />
                      </children>
                   </AnchorPane>
             </content>
@@ -110,9 +133,8 @@
                      <children>
                         <ToolBar prefHeight="40.0" prefWidth="1080.0" styleClass="toolbar">
                            <items>
-                              <Button mnemonicParsing="false" styleClass="btntoolbar" text="Dar Mantenimiento" />
-                              <Button mnemonicParsing="false" styleClass="btntoolbar" text="Editar" />
-                              <Button mnemonicParsing="false" styleClass="btntoolbar" text="Eliminar" />
+                              <Button disable="true" mnemonicParsing="false" styleClass="btntoolbar" text="Dar Mantenimiento" />
+                              <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#delete" styleClass="btntoolbar" text="Eliminar" />
                               <Label text="Buscar:">
                                  <styleClass>
                                     <String fx:value="labels" />
@@ -122,12 +144,66 @@
                               <TextField prefHeight="25.0" prefWidth="295.0" />
                            </items>
                         </ToolBar>
-                        <TableView fx:id="tvEquipos" layoutX="38.0" layoutY="66.0" prefHeight="510.0" prefWidth="957.0" />
+                        <TableView fx:id="tvEquipos" layoutX="38.0" layoutY="66.0" onMouseClicked="#selectionTable" prefHeight="510.0" prefWidth="1024.0">
+                           <columns>
+                              <TableColumn prefWidth="103.0" text="id_equipos">
+                              	<cellValueFactory>
+			                		<PropertyValueFactory property="id_equipos" />
+			                	</cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="88.0" text="tipo">
+	                              <cellValueFactory>
+				                		<PropertyValueFactory property="tipo" />
+				                	</cellValueFactory>
+			                  </TableColumn>
+                              <TableColumn prefWidth="115.0" text="modelo">
+                              <cellValueFactory>
+			                		<PropertyValueFactory property="modelo" />
+			                	</cellValueFactory>
+			                	</TableColumn>
+                              <TableColumn prefWidth="109.0" text="nserie">
+                              <cellValueFactory>
+			                		<PropertyValueFactory property="nserie" />
+			                	</cellValueFactory>
+			                	</TableColumn>
+                              <TableColumn prefWidth="104.0" text="marca">
+                              <cellValueFactory>
+			                		<PropertyValueFactory property="marca" />
+			                	</cellValueFactory>
+			                	</TableColumn>
+                              <TableColumn prefWidth="156.0" text="descripcion_equipo">
+                              	<cellValueFactory>
+			                		<PropertyValueFactory property="descripcion_equipo" />
+			                	</cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="146.0" text="fecha_registro">
+                             	<cellValueFactory>
+			                		<PropertyValueFactory property="fecha_registro" />
+			                	</cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="128.0" text="moral_id">
+                              	<cellValueFactory>
+			                		<PropertyValueFactory property="moral_id" />
+			                	</cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="176.0" text="fisico_id">
+                              	<cellValueFactory>
+			                		<PropertyValueFactory property="fisicos_id" />
+			                	</cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="125.0" text=" estatus_equipo">
+                              	<cellValueFactory>
+			                		<PropertyValueFactory property="estatus_equipo" />
+			                	</cellValueFactory>
+                              </TableColumn>
+                           </columns>
+                          </TableView>
+                        <CheckBox fx:id="ckbinactivos" layoutX="47.0" layoutY="602.0" mnemonicParsing="false" onAction="#seeDisable" text="Mostrar Inactivos" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab disable="true" styleClass="pestanias" text="Mantenimiento">
+            <Tab styleClass="pestanias" text="Mantenimiento">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1080.0" styleClass="allcolors">
                      <children>
