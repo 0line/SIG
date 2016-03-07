@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-	
 	ControllerWindows myWindows=ControllerWindows.getInstancia();
 	BorderPane container=null;
 	public static String screenSupports="Mantenimientos";
@@ -20,16 +19,22 @@ public class Main extends Application{
 	public static String fileLogin="../views/fxml/login.fxml";
 	public static String screenWelcome="Bienvenido";
 	public static String fileWelcome="../views/fxml/welcome.fxml";
-	public static String screenClientes="Bienvenido";
+	public static String screenClientes="Clientes";
 	public static String fileClientes="../views/fxml/Clientes.fxml";
-	public static String screenEmpleados="Bienvenido";
+	public static String screenEmpleados="Empleados";
 	public static String fileEmpleados="../views/fxml/Empleados.fxml";
+	public static String screenProductos="Productos";
+	public static String fileProductos="../views/fxml/Productos.fxml";
+	
 	Group root= new Group();	
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		myWindows.loadScreen(Main.screenSupports, Main.fileSupports);
 		myWindows.loadScreen(Main.screenLogin, Main.fileLogin);
 		myWindows.loadScreen(Main.screenWelcome, Main.fileWelcome);
+		myWindows.loadScreen(Main.screenClientes, Main.fileClientes);
+		myWindows.loadScreen(Main.screenEmpleados, Main.fileEmpleados);
+		myWindows.loadScreen(Main.screenProductos, Main.fileProductos);
 		java.net.URL location = getClass().getResource("../views/fxml/menu.fxml");
 		FXMLLoader fxml = new FXMLLoader(location);
 		container = (BorderPane) fxml.load();

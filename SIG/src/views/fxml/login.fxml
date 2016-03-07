@@ -7,35 +7,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" styleClass="allcolors" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" styleClass="allcolors" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="534.0" layoutX="129.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <PasswordField layoutX="730.0" layoutY="252.0" prefHeight="38.0" prefWidth="305.0" />
-      <TextField layoutX="730.0" layoutY="342.0" prefHeight="38.0" prefWidth="305.0" />
-      <Label layoutX="679.0" layoutY="264.0" text="user">
-         <styleClass>
-            <String fx:value="allcolors" />
-            <String fx:value="titles" />
-         </styleClass>
-      </Label>
-      <Label layoutX="679.0" layoutY="354.0" text="ps">
-         <styleClass>
-            <String fx:value="allcolors" />
-            <String fx:value="titles" />
-         </styleClass>
-      </Label>
-      <Button layoutX="897.0" layoutY="418.0" mnemonicParsing="false" onAction="#Welcome" prefHeight="38.0" prefWidth="115.0" styleClass="btntoolbar" text="Entrar" />
-      <Label layoutX="869.0" layoutY="150.0" text="Login">
-         <styleClass>
-            <String fx:value="allcolors" />
-            <String fx:value="titles" />
-         </styleClass>
-      </Label>
-      <Label alignment="CENTER" layoutX="622.0" layoutY="496.0" prefHeight="57.0" prefWidth="459.0" text="Mensaje">
+      <PasswordField fx:id="txtpass" layoutX="707.0" layoutY="332.0" prefHeight="38.0" prefWidth="305.0" promptText="contraseña" />
+      <TextField fx:id="txtuser" layoutX="707.0" layoutY="207.0" prefHeight="38.0" prefWidth="305.0" promptText="usuario" />
+      <Button fx:id="btnLogin" layoutX="897.0" layoutY="418.0" mnemonicParsing="false" onAction="#activeMenu" prefHeight="38.0" prefWidth="115.0" styleClass="btntoolbar" text="Entrar" />
+      <Label fx:id="lblMensaje" alignment="CENTER" layoutX="622.0" layoutY="496.0" prefHeight="57.0" prefWidth="459.0" text="Mensaje">
          <styleClass>
             <String fx:value="allcolors" />
             <String fx:value="labels" />

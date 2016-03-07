@@ -115,6 +115,7 @@ btnGuardarM.setDisable(false);
 		txtDireccionM.setDisable(false);
 		txtCorreoM.setDisable(false);
 		txtNombreM.clear();
+		txtPaisM.clear();
 		txtRazonM.clear();
 		txtDireccionM.clear();
 		txtTelefonoM.clear();
@@ -142,6 +143,8 @@ btnGuardarM.setDisable(true);
 		txtDireccionM.setDisable(false);
 		txtCorreoM.setDisable(false);
 		txtNombreM.clear();
+		txtRFCM.clear();
+		txtPaisM.clear();
 		txtRazonM.clear();
 		txtDireccionM.clear();
 		txtTelefonoM.clear();
@@ -178,7 +181,7 @@ btnGuardar.setDisable(true);
 	txtCiudadF.clear();
 	txtEstadoF.clear();
 	txtIDF.clear();
-	
+	txtPaisF.clear();
 }
 
 

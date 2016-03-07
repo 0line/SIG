@@ -18,7 +18,7 @@
                         <String fx:value="titles" />
                      </styleClass>
                   </Label>
-                  <Button fx:id="btnClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="400.0" stylesheets="@../css/main.css" text=" Clientes" textAlignment="CENTER">
+                  <Button fx:id="btnClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clientes" prefHeight="75.0" prefWidth="400.0" stylesheets="@../css/main.css" text=" Clientes" textAlignment="CENTER">
                      <styleClass>
                         <String fx:value="allcolors" />
                         <String fx:value="nav" />
@@ -30,7 +30,7 @@
                         <String fx:value="nav" />
                      </styleClass>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="400.0" stylesheets="@../css/main.css" text=" Empleados">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#empleados" prefHeight="75.0" prefWidth="400.0" stylesheets="@../css/main.css" text=" Empleados">
                      <styleClass>
                         <String fx:value="allcolors" />
                         <String fx:value="nav" />
@@ -48,7 +48,7 @@
                         <String fx:value="nav" />
                      </styleClass>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="400.0" stylesheets="@../css/main.css" text=" Productos">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#productos" prefHeight="75.0" prefWidth="400.0" stylesheets="@../css/main.css" text=" Productos">
                      <styleClass>
                         <String fx:value="allcolors" />
                         <String fx:value="nav" />
@@ -66,7 +66,7 @@
                         <String fx:value="nav" />
                      </styleClass>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="400.0" stylesheets="@../css/main.css" text=" Salir">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#salir" prefHeight="75.0" prefWidth="400.0" stylesheets="@../css/main.css" text=" Salir">
                      <styleClass>
                         <String fx:value="allcolors" />
                         <String fx:value="nav" />

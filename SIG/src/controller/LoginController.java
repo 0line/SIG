@@ -43,10 +43,7 @@ public class LoginController implements Initializable, IControllerWindows{
 		
 	}*/
 	
-	@FXML private void Welcome(){
-		myWindows.showScreen(Main.screenWelcome);
-		mc.activeMenu(nivel);
-	}
+	
 	
 }
 

@@ -122,7 +122,11 @@
                            </toggleGroup>
                         </RadioButton>
                         <RadioButton fx:id="rdmoral" alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" layoutX="229.0" layoutY="155.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#actCombo" text="Moral" textAlignment="RIGHT" toggleGroup="$tipocliente" />
-                        <Label fx:id="lblMensaje" alignment="CENTER" layoutX="687.0" layoutY="571.0" prefHeight="31.0" prefWidth="345.0" styleClass="titledat" text="Mensaje" />
+                        <Label fx:id="lblMensaje" alignment="CENTER" layoutX="660.0" layoutY="571.0" prefHeight="31.0" prefWidth="415.0" text="Mensaje">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass></Label>
                      </children>
                   </AnchorPane>
             </content>
@@ -135,13 +139,13 @@
                            <items>
                               <Button disable="true" mnemonicParsing="false" styleClass="btntoolbar" text="Dar Mantenimiento" />
                               <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#delete" styleClass="btntoolbar" text="Eliminar" />
-                              <Label text="Buscar:">
+                              <Label text="Buscar:" visible="false">
                                  <styleClass>
                                     <String fx:value="labels" />
                                     <String fx:value="btntoolbar" />
                                  </styleClass>
                               </Label>
-                              <TextField prefHeight="25.0" prefWidth="295.0" />
+                              <TextField prefHeight="25.0" prefWidth="295.0" visible="false" />
                            </items>
                         </ToolBar>
                         <TableView fx:id="tvEquipos" layoutX="38.0" layoutY="66.0" onMouseClicked="#selectionTable" prefHeight="510.0" prefWidth="1024.0">
@@ -199,11 +203,17 @@
                            </columns>
                           </TableView>
                         <CheckBox fx:id="ckbinactivos" layoutX="47.0" layoutY="602.0" mnemonicParsing="false" onAction="#seeDisable" text="Mostrar Inactivos" />
+                        <Label fx:id="lblMEquipos" alignment="CENTER" layoutX="249.0" layoutY="604.0" prefHeight="15.0" prefWidth="531.0" text="Label">
+                           <styleClass>
+                              <String fx:value="labels" />
+                              <String fx:value="allcolors" />
+                           </styleClass>
+                        </Label>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab styleClass="pestanias" text="Mantenimiento">
+            <Tab disable="true" styleClass="pestanias" text="Mantenimiento">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1080.0" styleClass="allcolors">
                      <children>
@@ -323,7 +333,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab styleClass="pestanias" text="Detalles Mantenimiento">
+            <Tab disable="true" styleClass="pestanias" text="Detalles Mantenimiento">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1080.0" styleClass="allcolors">
                      <children>

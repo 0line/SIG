@@ -8,12 +8,18 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 
 public class MenuController implements Initializable,IControllerWindows{
 	ControllerWindows myWindows=ControllerWindows.getInstancia();
 	private static MenuController menucontroller;
-	@FXML private Button btnMantenimientos,btnClientes;
+	@FXML private Button btnLogin,btnMantenimientos,btnClientes;
+	@FXML private TextField txtuser;
+	@FXML private PasswordField txtpass;
+	@FXML private Label lblMensaje;
 	public MenuController() {
 		// TODO Auto-generated constructor stub
 		super();
@@ -47,6 +53,10 @@ public class MenuController implements Initializable,IControllerWindows{
 	
 	//Métodos para activar las ventanas
 	
+		@FXML private void Welcome(){
+			myWindows.showScreen(Main.screenWelcome);
+		}	
+		
 	@FXML private void supports(){
 		myWindows.showScreen(Main.screenSupports);
 	}
@@ -61,12 +71,26 @@ public class MenuController implements Initializable,IControllerWindows{
 		myWindows.showScreen(Main.screenEmpleados);
 	}
 	
-	@FXML public void activeMenu(String nivel){
-		if(nivel.compareTo("admin")>0){
-			
+	@FXML private void productos(){
+		System.out.println(Main.screenProductos);
+		myWindows.showScreen(Main.screenProductos);
+	}
+	
+	@FXML private void salir(){
+		System.exit(0);
+	}
+	
+	@FXML public void activeMenu(){
+
+		Welcome();
+		/*if(txtuser.getText().trim().isEmpty() ||	txtpass.getText().trim().isEmpty())
+		{
+			lblMensaje.setText("Los campos son obligatorios");
 		}
 		else{
-			 admin();
-		}
+			Welcome();
+			//Usuario user= new Usuario();
+		}*/
+		
 	}
 }

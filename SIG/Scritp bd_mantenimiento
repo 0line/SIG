@@ -76,6 +76,17 @@ values(default,'rockola','cliente prueba','rfc','lorwasa','cordoba','veracruz','
 
 
 
+//INSERTAR USUARIO
+INSERT INTO public.empleados(
+            empleadoid, nombre, apellidop, apellidom, direccion, ciudad, 
+            estado, pais, telefono, correo, estatus)
+    VALUES (default, 'Jesus Alberto','Lozano', 'Ventura', 'Col. San Ignacion', 'Córdoba', 
+            'Veracruz', 'México', '2711277722','9150@utcv.edu.mx', '1');
+
+INSERT INTO public.usuario(
+            usuarioid, empleadoid, alias, contrasena, nivel, estatus)
+    VALUES (default, 2, 'jalozano', '12345', 'administrador', '1');
+
 
 
 

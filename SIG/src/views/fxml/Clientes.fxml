@@ -23,14 +23,14 @@
                               <Button fx:id="btnGuardar" disable="true" mnemonicParsing="false" onAction="#clickInsertar" styleClass="btntoolbar" text="Guardar" />
                               <Button fx:id="btnModificar" disable="true" mnemonicParsing="false" onAction="#clickModificar" styleClass="btntoolbar" text="Editar" />
                               <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" onAction="#clickEliminar" styleClass="btntoolbar" text="Eliminar" />
-                              <Button fx:id="btnCancelarF" mnemonicParsing="false" text="Cancelar" onAction="#clickCancelarF" styleClass="btntoolbar"/>
-                              <Label text="Buscar:">
+                              <Button fx:id="btnCancelarF" disable="true" mnemonicParsing="false" onAction="#clickCancelarF" styleClass="btntoolbar" text="Cancelar" />
+                              <Label text="Buscar:" visible="false">
                                  <styleClass>
                                     <String fx:value="labels" />
                                     <String fx:value="btntoolbar" />
                                  </styleClass>
                               </Label>
-                              <TextField fx:id="txtBuscar" prefHeight="25.0" prefWidth="295.0" />
+                              <TextField fx:id="txtBuscar" prefHeight="25.0" prefWidth="295.0" visible="false" />
                            </items>
                         </ToolBar>
                         <TableView fx:id="tvClientes" layoutX="38.0" layoutY="330.0" onMouseClicked="#clickTableView" prefHeight="246.0" prefWidth="957.0">
@@ -200,14 +200,14 @@
                               <Button fx:id="btnGuardarM" disable="true" mnemonicParsing="false" onAction="#clickInsertarM" styleClass="btntoolbar" text="Guardar" />
                               <Button fx:id="btnModificarM" disable="true" mnemonicParsing="false" onAction="#clickModificarM" styleClass="btntoolbar" text="Modificar" />
                               <Button fx:id="btnEliminarM" disable="true" mnemonicParsing="false" onAction="#clickEliminarM" styleClass="btntoolbar" text="Eliminar" />
-                              <Button fx:id="btnCancelarM" disable="true" mnemonicParsing="false" text="Cancelar" onAction="#clickCancelarM" styleClass="btntoolbar"/>
-                              <Label text="Buscar:">
+                              <Button fx:id="btnCancelarM" disable="true" mnemonicParsing="false" onAction="#clickCancelarM" styleClass="btntoolbar" text="Cancelar" />
+                              <Label text="Buscar:" visible="false">
                                  <styleClass>
                                     <String fx:value="labels" />
                                     <String fx:value="btntoolbar" />
                                  </styleClass>
                               </Label>
-                              <TextField prefHeight="25.0" prefWidth="295.0" />
+                              <TextField prefHeight="25.0" prefWidth="295.0" visible="false" />
                           </items>
                         </ToolBar>
                         <DatePicker disable="true" layoutX="841.0" layoutY="95.0" visible="false" />

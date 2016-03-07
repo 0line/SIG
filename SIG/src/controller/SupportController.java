@@ -28,6 +28,7 @@ import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LocalDateStringConverter;
 import jdk.nashorn.internal.parser.DateParser;
+import model.ClientesFisicos;
 import model.Equipos;
 import model.MClienteMoral;
 import sun.misc.FpUtils;
@@ -38,30 +39,35 @@ public class SupportController implements Initializable{
 	@FXML private DatePicker dpregistro;
 	@FXML private RadioButton rdfisico, rdmoral;
 	@FXML private ToggleGroup tipocliente;
-	@FXML private ComboBox<model.MClienteFisico>cbfisicos;
+	@FXML private ComboBox<model.ClientesFisicos>cbfisicos;
 	@FXML private ComboBox<model.MClienteMoral>cbmorales;
 	@FXML private ComboBox<String> cbtipos;
 	@FXML private TextField txtmarca,txtmodelo,txtnserie;
 	@FXML private TextArea txtdescripcion;
-	@FXML private Label lblMensaje;
+	@FXML private Label lblMensaje,lblMEquipos;
 	@FXML private CheckBox ckbinactivos;
 	@FXML private TableView<model.Equipos>tvEquipos;
 	private ObservableList<model.MClienteMoral> listcmorales;
+	private ObservableList<model.ClientesFisicos> lisFisicos;
 	private ObservableList<String> listTipos;
 	private ObservableList<model.Equipos> listequipos;
 	private MClienteMoral mcm;
+	private ClientesFisicos cf;
 	private Equipos equipo;
 	private FilteredList<model.MClienteMoral> bslistmorales;
 	int fisico;
 	public int id,fis,mor;
+	public int moral;
 	//Método constructor
 	public SupportController() {
 		listTipos=FXCollections.observableArrayList("pc","laptop","tablet","smartphone");
+		lisFisicos=FXCollections.observableArrayList();
 		listcmorales=FXCollections.observableArrayList();
 		listequipos=FXCollections.observableArrayList();
 		mcm=new MClienteMoral();
 		equipo= new Equipos();
 		id=fis=mor=0;
+		cf=new ClientesFisicos();
 	}
 	
 	
@@ -87,6 +93,30 @@ public class SupportController implements Initializable{
 		});
 		bslistmorales=new FilteredList<>(listcmorales);
 		cbmorales.setItems(listcmorales);
+	}
+	
+	//Llenar combobox fisicos
+	public void llenarFisicos(){
+		lisFisicos.clear();
+		String sql="select FisicosID,nombre,apellidop,apellidom from clientesfisicos where estatus='1'";
+		lisFisicos=cf.llenarCBFisicos(sql);
+		//Bloque para convertir a String lo recivido de la BD
+		cbfisicos.setConverter(new StringConverter<ClientesFisicos>() {
+			@Override
+			public String toString(ClientesFisicos object) {
+				// TODO Auto-generated method stub
+				String text= String.valueOf(object.getFisicosid())+"-"+object.getNombre()+" "+object.getApellidop()+" "+object.getApellidom();
+				return text;
+			}
+
+			@Override
+			public ClientesFisicos fromString(String string) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		});
+		//bslistmorales=new FilteredList<>(listcmorales);
+		cbfisicos.setItems(lisFisicos);
 	}
 
 	//Metodos para activar combobox clientes fisicos y morales
@@ -167,22 +197,22 @@ public class SupportController implements Initializable{
 						lblMensaje.setText("Falta elegir el tipo de equipo");
 					}
 					else{
-						if (txtmarca.getText()==null) {
+						if (txtmarca.getText().trim()==null || txtmarca.getText().trim().compareTo("")<0) {
 							lblMensaje.setVisible(true);
 							lblMensaje.setText("Falta la marca del equipo");
 						}
 						else{
-							if (txtmodelo.getText()==null) {
+							if (txtmodelo.getText().trim()==null || txtmodelo.getText().trim()==" ") {
 								lblMensaje.setVisible(true);
 								lblMensaje.setText("Falta el modelo del equipo");
 							}
 							else{
-								if (txtnserie.getText()==null) {
+								if (txtnserie.getText().trim()==null || txtnserie.getText().trim() == " ") {
 									lblMensaje.setVisible(true);
 									lblMensaje.setText("Falta el número de serie del equipo");
 								}
 								else{
-									if (txtdescripcion.getText()==null) {
+									if (txtdescripcion.getText().trim()==null || txtdescripcion.getText().trim()== " ") {
 										lblMensaje.setVisible(true);
 										lblMensaje.setText("Falta la descripción del equipo");
 									}
@@ -191,9 +221,14 @@ public class SupportController implements Initializable{
 										if (cbfisicos.getValue()==null) {
 											 fisico=0;
 										} else {
-											 fisico=Integer.parseInt(String.valueOf(cbfisicos.getValue()));
+											 fisico=Integer.parseInt(String.valueOf(cbfisicos.getSelectionModel().getSelectedItem().getFisicosid()));
 										}
-										int moral=Integer.parseInt(String.valueOf(cbmorales.getSelectionModel().getSelectedItem().getMoralesid()));
+										if (cbfisicos.getValue()==null) {
+											moral=0;
+										} else {
+											moral=Integer.parseInt(String.valueOf(cbmorales.getSelectionModel().getSelectedItem().getMoralesid()));
+										}
+										
 										Boolean result=equipo.insertar(new Equipos(0,cbtipos.getValue(),txtmodelo.getText(),txtnserie.getText(),txtmarca.getText(),txtdescripcion.getText(),fecha,moral,fisico,1));
 										if(result){
 											lblMensaje.setVisible(true);
@@ -221,7 +256,7 @@ public class SupportController implements Initializable{
 	public void llenarTabla(Boolean estatus){
 		listequipos.clear();
 		if(estatus==true){
-			System.out.println("antes de llenar la lista");
+			
 			String sql="select * from equipos where estatus_equipo=1";
 			listequipos=equipo.llenarTabla(sql);
 		}
@@ -233,44 +268,49 @@ public class SupportController implements Initializable{
 	//Método para regresar la table
 	
 	@FXML public void selectionTable(){
-		if(tvEquipos.getSelectionModel().getSelectedItem()!=null){
-			equipo=tvEquipos.getSelectionModel().getSelectedItem();
-			btnUpdate.setDisable(false);
-			btnCancel.setDisable(false);
-			btnDelete.setDisable(false);
-			dpregistro.setDisable(false);
-			rdfisico.setDisable(false); 
-			rdmoral.setDisable(false);
-			cbtipos.setDisable(false);
-			txtmarca.setDisable(false);
-			txtmodelo.setDisable(false);
-			txtnserie.setDisable(false);
-			txtdescripcion.setDisable(false);
-			id=equipo.getId_equipos();
-			int day=equipo.getFecha_registro().length();
-			//Variable para recuperar la fecha
-			int año=Integer.parseInt(equipo.getFecha_registro().substring(0, 4));
-			int mes=Integer.parseInt(equipo.getFecha_registro().substring(5, 7));
-			int dia=Integer.parseInt(equipo.getFecha_registro().substring(8, 10));
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-			dpregistro.setValue(dpregistro.getValue().parse(equipo.getFecha_registro()));
-			
-			if (cbfisicos.getValue()==null) {
-				 fis=equipo.getFisicos_id();
-			} else {
-				 fis=equipo.getFisicos_id();
+		if (ckbinactivos.isSelected()) {
+			lblMEquipos.setText("no puedes cargar datos eliminados");
+		}
+		else{
+			if(tvEquipos.getSelectionModel().getSelectedItem()!=null){
+				equipo=tvEquipos.getSelectionModel().getSelectedItem();
+				btnUpdate.setDisable(false);
+				btnCancel.setDisable(false);
+				btnDelete.setDisable(false);
+				dpregistro.setDisable(false);
+				rdfisico.setDisable(false); 
+				rdmoral.setDisable(false);
+				cbtipos.setDisable(false);
+				txtmarca.setDisable(false);
+				txtmodelo.setDisable(false);
+				txtnserie.setDisable(false);
+				txtdescripcion.setDisable(false);
+				id=equipo.getId_equipos();
+				int day=equipo.getFecha_registro().length();
+				//Variable para recuperar la fecha
+				int año=Integer.parseInt(equipo.getFecha_registro().substring(0, 4));
+				int mes=Integer.parseInt(equipo.getFecha_registro().substring(5, 7));
+				int dia=Integer.parseInt(equipo.getFecha_registro().substring(8, 10));
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+				dpregistro.setValue(dpregistro.getValue().parse(equipo.getFecha_registro()));
+				
+				if (cbfisicos.getValue()==null) {
+					 fis=equipo.getFisicos_id();
+				} else {
+					 fis=equipo.getFisicos_id();
+				}
+				if (cbmorales.getValue()==null) {
+					 mor=equipo.getMoral_id();
+				}
+				else{
+					 mor=cbmorales.getSelectionModel().getSelectedItem().getMoralesid();
+				}
+				cbtipos.setValue(equipo.getTipo());
+				txtmarca.setText(equipo.getMarca());
+				txtmodelo.setText(equipo.getModelo());
+				txtnserie.setText(equipo.getNserie());
+				txtdescripcion.setText(equipo.getDescripcion_equipo());
 			}
-			if (cbmorales.getValue()==null) {
-				 mor=equipo.getMoral_id();
-			}
-			else{
-				 mor=cbmorales.getSelectionModel().getSelectedItem().getMoralesid();
-			}
-			cbtipos.setValue(equipo.getTipo());
-			txtmarca.setText(equipo.getMarca());
-			txtmodelo.setText(equipo.getModelo());
-			txtnserie.setText(equipo.getNserie());
-			txtdescripcion.setText(equipo.getDescripcion_equipo());
 		}
 	}
 	
@@ -336,6 +376,7 @@ public class SupportController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		//Inicializando controles para la vista
 		llenarCMMorales();
+		llenarFisicos();
 		cbtipos.setItems(listTipos);
 		llenarTabla(true);
 	}

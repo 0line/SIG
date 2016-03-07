@@ -19,17 +19,17 @@
                         <ToolBar layoutY="-6.0" prefHeight="40.0" prefWidth="742.0" styleClass="toolbar">
                           <items>
                               <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clickNuevo" styleClass="btntoolbar" text="Nuevo" />
-                              <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#clickInsertar" styleClass="btntoolbar" text="Guardar" />
-                              <Button fx:id="btnModificar" mnemonicParsing="false" onAction="#clickModificar" styleClass="btntoolbar" text="Modificar" />
-                            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#clickEliminar" styleClass="btntoolbar" text="Eliminar" />
-                              <Button fx:id="btnCancelar" mnemonicParsing="false" styleClass="btntoolbar" text="Cancelar" />
-                              <Label text="Buscar:">
+                              <Button fx:id="btnGuardar" disable="true" mnemonicParsing="false" onAction="#clickInsertar" styleClass="btntoolbar" text="Guardar" />
+                              <Button fx:id="btnModificar" disable="true" mnemonicParsing="false" onAction="#clickModificar" styleClass="btntoolbar" text="Modificar" />
+                            <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" onAction="#clickEliminar" styleClass="btntoolbar" text="Eliminar" />
+                              <Button fx:id="btnCancelar" disable="true" mnemonicParsing="false" styleClass="btntoolbar" text="Cancelar" />
+                              <Label text="Buscar:" visible="false">
                                  <styleClass>
                                     <String fx:value="labels" />
                                     <String fx:value="btntoolbar" />
                                  </styleClass>
                               </Label>
-                              <TextField fx:id="txtBuscar" prefHeight="25.0" prefWidth="295.0" />
+                              <TextField fx:id="txtBuscar" prefHeight="25.0" prefWidth="295.0" visible="false" />
                           </items>
                         </ToolBar>
                         <Label layoutX="297.0" layoutY="50.0" text="Datos del Empleado">
@@ -59,48 +59,48 @@
                               <String fx:value="allcolors" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="19.0" layoutY="206.0" text="Dirección:" >
+                        <Label layoutX="19.0" layoutY="206.0" text="Dirección:">
                          <styleClass>
                               <String fx:value="titledat" />
                               <String fx:value="allcolors" />
                            </styleClass>
                         </Label>
-                        <TextArea fx:id="txtDireccion" layoutX="141.0" layoutY="215.0" prefHeight="126.0" prefWidth="200.0" />
-                        <Label layoutX="390.0" layoutY="81.0" text="Ciudad:" >
+                        <TextArea fx:id="txtDireccion" disable="true" layoutX="141.0" layoutY="215.0" prefHeight="126.0" prefWidth="200.0" />
+                        <Label layoutX="390.0" layoutY="81.0" text="Ciudad:">
                          <styleClass>
                               <String fx:value="titledat" />
                               <String fx:value="allcolors" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="390.0" layoutY="120.0" text="Estado:" >
+                        <Label layoutX="390.0" layoutY="120.0" text="Estado:">
                          <styleClass>
                               <String fx:value="titledat" />
                               <String fx:value="allcolors" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="390.0" layoutY="164.0" text="País:" >
+                        <Label layoutX="390.0" layoutY="164.0" text="País:">
                          <styleClass>
                               <String fx:value="titledat" />
                               <String fx:value="allcolors" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="390.0" layoutY="207.0" text="Teléfono:" >
+                        <Label layoutX="390.0" layoutY="207.0" text="Teléfono:">
                          <styleClass>
                               <String fx:value="titledat" />
                               <String fx:value="allcolors" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="390.0" layoutY="248.0" text="Correo:" >
+                        <Label layoutX="390.0" layoutY="248.0" text="Correo:">
                          <styleClass>
                               <String fx:value="titledat" />
                               <String fx:value="allcolors" />
                            </styleClass>
                         </Label>
-                        <TextField fx:id="txtCiudad" layoutX="465.0" layoutY="77.0" />
-                        <TextField fx:id="txtEstado" layoutX="465.0" layoutY="116.0" />
-                        <TextField fx:id="txtPais" layoutX="465.0" layoutY="160.0" />
-                        <TextField fx:id="txtTelefono" layoutX="465.0" layoutY="203.0" />
-                        <TextField fx:id="txtCorreo" layoutX="465.0" layoutY="244.0" />
+                        <TextField fx:id="txtCiudad" disable="true" layoutX="465.0" layoutY="77.0" />
+                        <TextField fx:id="txtEstado" disable="true" layoutX="465.0" layoutY="116.0" />
+                        <TextField fx:id="txtPais" disable="true" layoutX="465.0" layoutY="160.0" />
+                        <TextField fx:id="txtTelefono" disable="true" layoutX="465.0" layoutY="203.0" />
+                        <TextField fx:id="txtCorreo" disable="true" layoutX="465.0" layoutY="244.0" />
                         <TableView fx:id="tvEmpleados" layoutX="6.0" layoutY="356.0" onMouseClicked="#clickTableView" prefHeight="200.0" prefWidth="853.0">
                           <columns>
                             <TableColumn prefWidth="59.0" text="ID">

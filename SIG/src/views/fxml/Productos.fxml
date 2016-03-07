@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerProductos">
+   <children>
+      <TabPane prefHeight="740.0" prefWidth="1080.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab styleClass="pestanias" text="Productos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="628.0" prefWidth="1080.0" styleClass="allcolors">
+                     <children>
+                        <ToolBar prefHeight="40.0" prefWidth="1080.0" styleClass="toolbar">
+                          <items>
+                              <Button fx:id="btnNuevo" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clickNuevo" prefHeight="13.0" prefWidth="83.0" text="Nuevo">
+                                 <styleClass>
+                                    <String fx:value="allcolors" />
+                                    <String fx:value="btntoolbar" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btnGuardar" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#clickInsertar" prefHeight="10.0" prefWidth="96.0" text="Guardar">
+                                 <styleClass>
+                                    <String fx:value="allcolors" />
+                                    <String fx:value="btntoolbar" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btnModificar" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#clickModificar" prefHeight="10.0" prefWidth="96.0" text="Modificar">
+                                 <styleClass>
+                                    <String fx:value="allcolors" />
+                                    <String fx:value="btntoolbar" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btnEliminar" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#clickEliminar" prefHeight="10.0" prefWidth="96.0" text="Eliminar">
+                                 <styleClass>
+                                    <String fx:value="allcolors" />
+                                    <String fx:value="btntoolbar" />
+                                 </styleClass>
+                              </Button>
+                          </items>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </ToolBar>
+                        <Label contentDisplay="CENTER" layoutX="463.0" layoutY="49.0" styleClass="titledat" text="Datos Generales" />
+                        <Label layoutX="28.0" layoutY="91.0" text="Nombre:" />
+                        <TextField fx:id="txtNombre" disable="true" layoutX="141.0" layoutY="87.0" />
+                        <TextField fx:id="txtDescripcion" disable="true" layoutX="141.0" layoutY="123.0" />
+                        <Label layoutX="28.0" layoutY="127.0" text="Descripción:" />
+                        <Label layoutX="28.0" layoutY="166.0" text="Numero de Serie:" />
+                        <TextField fx:id="txtNumero" disable="true" layoutX="141.0" layoutY="162.0" />
+                        <Label layoutX="28.0" layoutY="203.0" text="Marca:" />
+                        <TextField fx:id="txtMarca" disable="true" layoutX="141.0" layoutY="199.0" />
+                        <TextField fx:id="txtExistencias" disable="true" layoutX="494.0" layoutY="162.0" />
+                        <Label layoutX="362.0" layoutY="166.0" text="Existencias:" />
+                        <Label layoutX="362.0" layoutY="127.0" text="Precio" />
+                        <TextField fx:id="txtPrecio" disable="true" layoutX="494.0" layoutY="123.0" />
+                        <TextField fx:id="txtModelo" disable="true" layoutX="494.0" layoutY="87.0" />
+                        <Label layoutX="362.0" layoutY="91.0" text="Modelo:" />
+                        <TableView fx:id="tvProductos" layoutX="23.0" layoutY="364.0" onMouseClicked="#clickTableView" prefHeight="200.0" prefWidth="941.0">
+                          <columns>
+                            <TableColumn prefWidth="55.0" text="ID">
+                            <cellValueFactory>
+                            <PropertyValueFactory property="productoid" />
+                            </cellValueFactory>
+                            </TableColumn>
+                             
+                              <TableColumn prefWidth="66.0" text="Nombre">
+                           <cellValueFactory>
+                            <PropertyValueFactory property="nombre" />
+                            </cellValueFactory>
+                            </TableColumn>
+                         
+                                          <TableColumn prefWidth="143.0" text="Descripción">
+                                     <cellValueFactory>
+                            <PropertyValueFactory property="descripcion" />
+                            </cellValueFactory>
+                            </TableColumn>
+                              <TableColumn prefWidth="110.0" text="Número de Serie">
+                       <cellValueFactory>
+                            <PropertyValueFactory property="numeroserie" />
+                            </cellValueFactory>
+                            </TableColumn>
+                              <TableColumn minWidth="0.0" prefWidth="69.0" text="Marca">
+                                <cellValueFactory>
+                            <PropertyValueFactory property="marca" />
+                            </cellValueFactory>
+                            </TableColumn>
+                              <TableColumn prefWidth="138.0" text="Modelo">
+                                 <cellValueFactory>
+                            <PropertyValueFactory property="modelo" />
+                            </cellValueFactory>
+                            </TableColumn>
+                              <TableColumn prefWidth="75.0" text="Precio">
+                                 <cellValueFactory>
+                            <PropertyValueFactory property="precio" />
+                            </cellValueFactory>
+                            </TableColumn>
+                              <TableColumn prefWidth="107.0" text="Existencias">
+                                 <cellValueFactory>
+                            <PropertyValueFactory property="existencias" />
+                            </cellValueFactory>
+                            </TableColumn>
+                              <TableColumn prefWidth="106.0" text="Estatus">
+                                <cellValueFactory>
+                            <PropertyValueFactory property="estatus" />
+                            </cellValueFactory>
+                            </TableColumn>
+                                                         </columns>
+                        </TableView>
+                        <TextField fx:id="txtID" layoutX="439.0" layoutY="266.0" visible="false" />
+                        <Label fx:id="lblMensaje" layoutX="107.0" layoutY="583.0" text="Mensaje" />
+                        <CheckBox fx:id="ckbInactivos" layoutX="683.0" layoutY="583.0" mnemonicParsing="false" onAction="#mostrarInactivos" text="Inactivos" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

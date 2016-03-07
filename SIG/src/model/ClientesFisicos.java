@@ -23,9 +23,10 @@ public class ClientesFisicos {
 	private PreparedStatement comando;
 	private ResultSet rsClientes;
 	private ObservableList<ClientesFisicos> listaClientes;
-	
+	private ObservableList<ClientesFisicos> listaCFisicos;
 	public ClientesFisicos(){
 		listaClientes=FXCollections.observableArrayList();
+		listaCFisicos=FXCollections.observableArrayList();
 		this.fisicosid=0;
 		this.rfc="";
 		this.nombre="";
@@ -260,5 +261,26 @@ public void setEstatus(Boolean estatus) {
 		finally{
 			myCon.desconect();
 		}
+	}
+	public ObservableList<ClientesFisicos> llenarCBFisicos(String sql){
+		try {
+			myCon.conect();
+			comando=myCon.getCon().prepareStatement(sql);
+			rsClientes=comando.executeQuery();
+			while (rsClientes.next()) {
+				ClientesFisicos cm= new ClientesFisicos();
+				cm.setFisicosid(rsClientes.getInt("FisicosID"));
+				cm.setNombre(rsClientes.getString("nombre"));
+				cm.setApellidop(rsClientes.getString("apellidoP"));
+				cm.setApellidop(rsClientes.getString("apellidoM"));
+				listaCFisicos.add(cm);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			myCon.desconect();
+		}
+		return listaCFisicos;
 	}
 }
