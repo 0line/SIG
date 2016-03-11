@@ -1,0 +1,669 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.2.14
+-- Dumped by pg_dump version 9.2.14
+-- Started on 2016-03-11 11:20:44
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 182 (class 3079 OID 11727)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2001 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 168 (class 1259 OID 27399)
+-- Name: clientesfisicos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE clientesfisicos (
+    fisicosid integer NOT NULL,
+    rfc character varying(15) NOT NULL,
+    nombre character varying(20) NOT NULL,
+    apellidop character varying(20) NOT NULL,
+    apellidom character varying(20) NOT NULL,
+    direccion character varying(30) NOT NULL,
+    ciudad character varying(15) NOT NULL,
+    estado character varying(20) NOT NULL,
+    pais character varying(15) NOT NULL,
+    telefono character varying(30) NOT NULL,
+    correo character varying(30) NOT NULL,
+    estatus bit(1) NOT NULL
+);
+
+
+ALTER TABLE public.clientesfisicos OWNER TO postgres;
+
+--
+-- TOC entry 169 (class 1259 OID 27402)
+-- Name: clientesfisicos_fisicosid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE clientesfisicos_fisicosid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.clientesfisicos_fisicosid_seq OWNER TO postgres;
+
+--
+-- TOC entry 2002 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: clientesfisicos_fisicosid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE clientesfisicos_fisicosid_seq OWNED BY clientesfisicos.fisicosid;
+
+
+--
+-- TOC entry 170 (class 1259 OID 27404)
+-- Name: clientesmorales; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE clientesmorales (
+    moralesid integer NOT NULL,
+    razonsocial character varying(50) NOT NULL,
+    nombre character varying(20) NOT NULL,
+    rfc character varying(13) NOT NULL,
+    direccion character varying(50) NOT NULL,
+    ciudad character varying(15) NOT NULL,
+    estado character varying(15) NOT NULL,
+    pais character varying(15) NOT NULL,
+    telefono character varying(20) NOT NULL,
+    correo character varying(30) NOT NULL,
+    estatus bit(1) NOT NULL
+);
+
+
+ALTER TABLE public.clientesmorales OWNER TO postgres;
+
+--
+-- TOC entry 171 (class 1259 OID 27407)
+-- Name: clientesmorales_moralesid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE clientesmorales_moralesid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.clientesmorales_moralesid_seq OWNER TO postgres;
+
+--
+-- TOC entry 2003 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: clientesmorales_moralesid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE clientesmorales_moralesid_seq OWNED BY clientesmorales.moralesid;
+
+
+--
+-- TOC entry 172 (class 1259 OID 27409)
+-- Name: empleados; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE empleados (
+    empleadoid integer NOT NULL,
+    nombre character varying(20) NOT NULL,
+    apellidop character varying(20) NOT NULL,
+    apellidom character varying(20) NOT NULL,
+    direccion character varying(50) NOT NULL,
+    ciudad character varying(20) NOT NULL,
+    estado character varying(20) NOT NULL,
+    pais character varying(20) NOT NULL,
+    telefono character varying(20) NOT NULL,
+    correo character varying(40) NOT NULL,
+    estatus bit(1) NOT NULL
+);
+
+
+ALTER TABLE public.empleados OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 27412)
+-- Name: empleados_empleadoid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE empleados_empleadoid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.empleados_empleadoid_seq OWNER TO postgres;
+
+--
+-- TOC entry 2004 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: empleados_empleadoid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE empleados_empleadoid_seq OWNED BY empleados.empleadoid;
+
+
+--
+-- TOC entry 174 (class 1259 OID 27414)
+-- Name: equipos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE equipos (
+    id_equipos integer NOT NULL,
+    tipo character varying(50) NOT NULL,
+    modelo character varying(200) NOT NULL,
+    nserie character varying(200) NOT NULL,
+    marca character varying(50) NOT NULL,
+    descripcion_equipo text NOT NULL,
+    fecha_registro character varying NOT NULL,
+    moral_id integer,
+    fisico_id integer,
+    estatus_equipo integer DEFAULT 1 NOT NULL
+);
+
+
+ALTER TABLE public.equipos OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 27421)
+-- Name: equipos_id_equipos_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE equipos_id_equipos_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.equipos_id_equipos_seq OWNER TO postgres;
+
+--
+-- TOC entry 2005 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: equipos_id_equipos_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE equipos_id_equipos_seq OWNED BY equipos.id_equipos;
+
+
+--
+-- TOC entry 176 (class 1259 OID 27423)
+-- Name: productos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE productos (
+    productoid integer NOT NULL,
+    nombre character varying(20) NOT NULL,
+    descripcion character varying(100) NOT NULL,
+    numeroserie integer NOT NULL,
+    marca character varying(15) NOT NULL,
+    modelo character varying(20) NOT NULL,
+    precio character varying(100) NOT NULL,
+    existencias integer NOT NULL,
+    estatus bit(1) NOT NULL
+);
+
+
+ALTER TABLE public.productos OWNER TO postgres;
+
+--
+-- TOC entry 177 (class 1259 OID 27426)
+-- Name: productos_productoid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE productos_productoid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.productos_productoid_seq OWNER TO postgres;
+
+--
+-- TOC entry 2006 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: productos_productoid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE productos_productoid_seq OWNED BY productos.productoid;
+
+
+--
+-- TOC entry 181 (class 1259 OID 27462)
+-- Name: proveedores; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE proveedores (
+    proveedoresid integer NOT NULL,
+    empresa character varying(20) NOT NULL,
+    nombrecontacto character varying(20) NOT NULL,
+    apellidopcontacto character varying(20) NOT NULL,
+    apellidomcontacto character varying(20) NOT NULL,
+    direccion character varying(30) NOT NULL,
+    ciudad character varying(20) NOT NULL,
+    estado character varying(15) NOT NULL,
+    pais character varying(15) NOT NULL,
+    telefono character varying(20) NOT NULL,
+    correo character varying(30) NOT NULL,
+    estatus bit(1) NOT NULL
+);
+
+
+ALTER TABLE public.proveedores OWNER TO postgres;
+
+--
+-- TOC entry 180 (class 1259 OID 27460)
+-- Name: proveedores_proveedoresid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE proveedores_proveedoresid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.proveedores_proveedoresid_seq OWNER TO postgres;
+
+--
+-- TOC entry 2007 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: proveedores_proveedoresid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE proveedores_proveedoresid_seq OWNED BY proveedores.proveedoresid;
+
+
+--
+-- TOC entry 178 (class 1259 OID 27428)
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE usuario (
+    usuarioid integer NOT NULL,
+    empleadoid smallint,
+    alias character varying(20),
+    contrasena character varying(15),
+    nivel character varying(20),
+    estatus bit(1) NOT NULL
+);
+
+
+ALTER TABLE public.usuario OWNER TO postgres;
+
+--
+-- TOC entry 179 (class 1259 OID 27431)
+-- Name: usuario_usuarioid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuario_usuarioid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.usuario_usuarioid_seq OWNER TO postgres;
+
+--
+-- TOC entry 2008 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: usuario_usuarioid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE usuario_usuarioid_seq OWNED BY usuario.usuarioid;
+
+
+--
+-- TOC entry 1847 (class 2604 OID 27433)
+-- Name: fisicosid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY clientesfisicos ALTER COLUMN fisicosid SET DEFAULT nextval('clientesfisicos_fisicosid_seq'::regclass);
+
+
+--
+-- TOC entry 1848 (class 2604 OID 27434)
+-- Name: moralesid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY clientesmorales ALTER COLUMN moralesid SET DEFAULT nextval('clientesmorales_moralesid_seq'::regclass);
+
+
+--
+-- TOC entry 1849 (class 2604 OID 27435)
+-- Name: empleadoid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY empleados ALTER COLUMN empleadoid SET DEFAULT nextval('empleados_empleadoid_seq'::regclass);
+
+
+--
+-- TOC entry 1851 (class 2604 OID 27436)
+-- Name: id_equipos; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY equipos ALTER COLUMN id_equipos SET DEFAULT nextval('equipos_id_equipos_seq'::regclass);
+
+
+--
+-- TOC entry 1852 (class 2604 OID 27437)
+-- Name: productoid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY productos ALTER COLUMN productoid SET DEFAULT nextval('productos_productoid_seq'::regclass);
+
+
+--
+-- TOC entry 1854 (class 2604 OID 27465)
+-- Name: proveedoresid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY proveedores ALTER COLUMN proveedoresid SET DEFAULT nextval('proveedores_proveedoresid_seq'::regclass);
+
+
+--
+-- TOC entry 1853 (class 2604 OID 27438)
+-- Name: usuarioid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario ALTER COLUMN usuarioid SET DEFAULT nextval('usuario_usuarioid_seq'::regclass);
+
+
+--
+-- TOC entry 1980 (class 0 OID 27399)
+-- Dependencies: 168
+-- Data for Name: clientesfisicos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY clientesfisicos (fisicosid, rfc, nombre, apellidop, apellidom, direccion, ciudad, estado, pais, telefono, correo, estatus) FROM stdin;
+1	rfc	jesus	lozano	ventura	cordoba	cordoba	veracruz	mexico	322121	mail@mail.com	1
+3	jf7	j	j	j	j	j	j	j	262	j	1
+\.
+
+
+--
+-- TOC entry 2009 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: clientesfisicos_fisicosid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('clientesfisicos_fisicosid_seq', 3, true);
+
+
+--
+-- TOC entry 1982 (class 0 OID 27404)
+-- Dependencies: 170
+-- Data for Name: clientesmorales; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY clientesmorales (moralesid, razonsocial, nombre, rfc, direccion, ciudad, estado, pais, telefono, correo, estatus) FROM stdin;
+1	j	j	j	j	j	j	j	1222	j	1
+\.
+
+
+--
+-- TOC entry 2010 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: clientesmorales_moralesid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('clientesmorales_moralesid_seq', 1, true);
+
+
+--
+-- TOC entry 1984 (class 0 OID 27409)
+-- Dependencies: 172
+-- Data for Name: empleados; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY empleados (empleadoid, nombre, apellidop, apellidom, direccion, ciudad, estado, pais, telefono, correo, estatus) FROM stdin;
+2	Jesus Alberto	Lozano	Ventura	Col. San Ignacion	Córdoba	Veracruz	México	2711277722	9150@utcv.edu.mx	1
+3	asdasd	gfgf	gfgf	ffg\tghfhgfhgfhfhgfh\thg\th\thg\th\t\t\t\t\t\t\t	                    	hg	                    	fh	fh	0
+4	alvaro	martinez	garcia	jdjdj	cordoba	veracruz	mexico	12334	hdh	1
+\.
+
+
+--
+-- TOC entry 2011 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: empleados_empleadoid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('empleados_empleadoid_seq', 4, true);
+
+
+--
+-- TOC entry 1986 (class 0 OID 27414)
+-- Dependencies: 174
+-- Data for Name: equipos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY equipos (id_equipos, tipo, modelo, nserie, marca, descripcion_equipo, fecha_registro, moral_id, fisico_id, estatus_equipo) FROM stdin;
+1	pc	patito	no tiene 	patito	datos de prueba	2016-03-08	1	0	1
+3	pc	      m	adasdasda	patito	sasdsadadasda	2016-03-16	2	0	1
+4	laptop	a	no tiene	Dell	datos de prueba	2016-03-10	2	0	1
+2	pc	m	 m	m	m	2016-03-08	0	4	1
+5	pc	no tiene	no tiene	patito	datos de prueba	2016-03-09	1	0	1
+6	pc	aaaa	aaaaaa	e	aaaaaaaaaaaaa	2016-03-10	1	0	1
+7	pc	aaaaaa	aaaaaaaa	aaaaaaa   b	aaaaaaaa	2016-03-10	0	1	1
+\.
+
+
+--
+-- TOC entry 2012 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: equipos_id_equipos_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('equipos_id_equipos_seq', 7, true);
+
+
+--
+-- TOC entry 1988 (class 0 OID 27423)
+-- Dependencies: 176
+-- Data for Name: productos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY productos (productoid, nombre, descripcion, numeroserie, marca, modelo, precio, existencias, estatus) FROM stdin;
+1	Compu	ninguna	123	nueva	nd6	$1000	1	0
+34	h	h	6	h	h	8.90	19	1
+35	j	j	1	j	nnc	-10	7	1
+36	j	j	2	j	j	222	1	1
+\.
+
+
+--
+-- TOC entry 2013 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: productos_productoid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('productos_productoid_seq', 36, true);
+
+
+--
+-- TOC entry 1993 (class 0 OID 27462)
+-- Dependencies: 181
+-- Data for Name: proveedores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY proveedores (proveedoresid, empresa, nombrecontacto, apellidopcontacto, apellidomcontacto, direccion, ciudad, estado, pais, telefono, correo, estatus) FROM stdin;
+1	coca cola	kaka	j	jj	jj	jj	j	j	1223	j	1
+\.
+
+
+--
+-- TOC entry 2014 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: proveedores_proveedoresid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('proveedores_proveedoresid_seq', 1, true);
+
+
+--
+-- TOC entry 1990 (class 0 OID 27428)
+-- Dependencies: 178
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuario (usuarioid, empleadoid, alias, contrasena, nivel, estatus) FROM stdin;
+3	2	jalozano	12345	administrador	1
+\.
+
+
+--
+-- TOC entry 2015 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: usuario_usuarioid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuario_usuarioid_seq', 3, true);
+
+
+--
+-- TOC entry 1856 (class 2606 OID 27440)
+-- Name: clientesfisicos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY clientesfisicos
+    ADD CONSTRAINT clientesfisicos_pkey PRIMARY KEY (fisicosid);
+
+
+--
+-- TOC entry 1858 (class 2606 OID 27442)
+-- Name: clientesfisicos_rfc_key; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY clientesfisicos
+    ADD CONSTRAINT clientesfisicos_rfc_key UNIQUE (rfc);
+
+
+--
+-- TOC entry 1860 (class 2606 OID 27444)
+-- Name: clientesmorales_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY clientesmorales
+    ADD CONSTRAINT clientesmorales_pkey PRIMARY KEY (moralesid);
+
+
+--
+-- TOC entry 1862 (class 2606 OID 27446)
+-- Name: clientesmorales_rfc_key; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY clientesmorales
+    ADD CONSTRAINT clientesmorales_rfc_key UNIQUE (rfc);
+
+
+--
+-- TOC entry 1864 (class 2606 OID 27448)
+-- Name: empleados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY empleados
+    ADD CONSTRAINT empleados_pkey PRIMARY KEY (empleadoid);
+
+
+--
+-- TOC entry 1866 (class 2606 OID 27450)
+-- Name: equipos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY equipos
+    ADD CONSTRAINT equipos_pkey PRIMARY KEY (id_equipos);
+
+
+--
+-- TOC entry 1868 (class 2606 OID 27452)
+-- Name: productos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY productos
+    ADD CONSTRAINT productos_pkey PRIMARY KEY (productoid);
+
+
+--
+-- TOC entry 1872 (class 2606 OID 27467)
+-- Name: proveedores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY proveedores
+    ADD CONSTRAINT proveedores_pkey PRIMARY KEY (proveedoresid);
+
+
+--
+-- TOC entry 1870 (class 2606 OID 27454)
+-- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (usuarioid);
+
+
+--
+-- TOC entry 1873 (class 2606 OID 27455)
+-- Name: Usuario_EmpleadoID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT "Usuario_EmpleadoID_fkey" FOREIGN KEY (empleadoid) REFERENCES empleados(empleadoid);
+
+
+--
+-- TOC entry 2000 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2016-03-11 11:20:46
+
+--
+-- PostgreSQL database dump complete
+--
+
